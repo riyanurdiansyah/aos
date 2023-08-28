@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:aos/src/domain/entities/data_product/data_product.dart';
+import 'package:aos/src/domain/entities/default/default_response.dart';
 import 'package:aos/src/domain/entities/product/product.dart';
+import 'package:aos/src/domain/entities_hive/product_hive.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -51,7 +55,23 @@ const Map<String, dynamic> bodyListSales = {
   "pwhere7": "4"
 };
 
+Map<String, dynamic> bodyInsertSales = {
+  "KEY": "YhNnM/2K++gp/FMWA+m0Pg==",
+  "pmethod": "insert sales",
+  "pdata1": "SO-1112",
+  "pdata2": "Puri",
+  "pdata3": "Grab Instan",
+  "pdata4": "OVO",
+  "pdata5": "JK",
+  "pdataDetail": json.encode([
+    {"detail1": "AOS001", "detail2": "2", "detail3": "250000", "detail4": ""},
+    {"detail1": "AOS003", "detail2": "5", "detail3": "15000", "detail4": ""}
+  ])
+};
+
 const emptyProduct = Product(success: false, message: "");
+
+const emptyDefaultResponse = DefaultResponse(success: false, message: "");
 
 const emptyDetailProduct = DataProduct(
   NO: 0,

@@ -31,7 +31,10 @@ class HomeDataSourceImpl implements HomeDataSource {
 
   @override
   Future<Response> insertSales() async {
-    // TODO: implement insertSales
-    throw UnimplementedError();
+    return await dio.post(
+      url,
+      data: bodyInsertSales,
+      options: dioOption(),
+    );
   }
 }

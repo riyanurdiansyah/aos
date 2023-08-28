@@ -27,6 +27,7 @@ mixin _$DataProduct {
   String get productValue => throw _privateConstructorUsedError;
   String get productType => throw _privateConstructorUsedError;
   String get productPhoto => throw _privateConstructorUsedError;
+  int get qty => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +48,8 @@ abstract class $DataProductCopyWith<$Res> {
       String productDescription,
       String productValue,
       String productType,
-      String productPhoto});
+      String productPhoto,
+      int qty});
 }
 
 /// @nodoc
@@ -70,6 +72,7 @@ class _$DataProductCopyWithImpl<$Res, $Val extends DataProduct>
     Object? productValue = null,
     Object? productType = null,
     Object? productPhoto = null,
+    Object? qty = null,
   }) {
     return _then(_value.copyWith(
       NO: null == NO
@@ -100,6 +103,10 @@ class _$DataProductCopyWithImpl<$Res, $Val extends DataProduct>
           ? _value.productPhoto
           : productPhoto // ignore: cast_nullable_to_non_nullable
               as String,
+      qty: null == qty
+          ? _value.qty
+          : qty // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -119,7 +126,8 @@ abstract class _$$_DataProductCopyWith<$Res>
       String productDescription,
       String productValue,
       String productType,
-      String productPhoto});
+      String productPhoto,
+      int qty});
 }
 
 /// @nodoc
@@ -140,6 +148,7 @@ class __$$_DataProductCopyWithImpl<$Res>
     Object? productValue = null,
     Object? productType = null,
     Object? productPhoto = null,
+    Object? qty = null,
   }) {
     return _then(_$_DataProduct(
       NO: null == NO
@@ -170,6 +179,10 @@ class __$$_DataProductCopyWithImpl<$Res>
           ? _value.productPhoto
           : productPhoto // ignore: cast_nullable_to_non_nullable
               as String,
+      qty: null == qty
+          ? _value.qty
+          : qty // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -184,7 +197,8 @@ class _$_DataProduct implements _DataProduct {
       required this.productDescription,
       required this.productValue,
       required this.productType,
-      required this.productPhoto});
+      required this.productPhoto,
+      this.qty = 0});
 
   factory _$_DataProduct.fromJson(Map<String, dynamic> json) =>
       _$$_DataProductFromJson(json);
@@ -203,10 +217,13 @@ class _$_DataProduct implements _DataProduct {
   final String productType;
   @override
   final String productPhoto;
+  @override
+  @JsonKey()
+  final int qty;
 
   @override
   String toString() {
-    return 'DataProduct(NO: $NO, productId: $productId, productName: $productName, productDescription: $productDescription, productValue: $productValue, productType: $productType, productPhoto: $productPhoto)';
+    return 'DataProduct(NO: $NO, productId: $productId, productName: $productName, productDescription: $productDescription, productValue: $productValue, productType: $productType, productPhoto: $productPhoto, qty: $qty)';
   }
 
   @override
@@ -226,13 +243,14 @@ class _$_DataProduct implements _DataProduct {
             (identical(other.productType, productType) ||
                 other.productType == productType) &&
             (identical(other.productPhoto, productPhoto) ||
-                other.productPhoto == productPhoto));
+                other.productPhoto == productPhoto) &&
+            (identical(other.qty, qty) || other.qty == qty));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, NO, productId, productName,
-      productDescription, productValue, productType, productPhoto);
+      productDescription, productValue, productType, productPhoto, qty);
 
   @JsonKey(ignore: true)
   @override
@@ -256,7 +274,8 @@ abstract class _DataProduct implements DataProduct {
       required final String productDescription,
       required final String productValue,
       required final String productType,
-      required final String productPhoto}) = _$_DataProduct;
+      required final String productPhoto,
+      final int qty}) = _$_DataProduct;
 
   factory _DataProduct.fromJson(Map<String, dynamic> json) =
       _$_DataProduct.fromJson;
@@ -275,6 +294,8 @@ abstract class _DataProduct implements DataProduct {
   String get productType;
   @override
   String get productPhoto;
+  @override
+  int get qty;
   @override
   @JsonKey(ignore: true)
   _$$_DataProductCopyWith<_$_DataProduct> get copyWith =>

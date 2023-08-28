@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:aos/src/core/failure.dart';
 import 'package:aos/src/data/home_datasource.dart';
 import 'package:aos/src/domain/entities/data_product/data_product.dart';
+import 'package:aos/src/domain/entities/default/default_response.dart';
 import 'package:aos/src/domain/entities/product/product.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
@@ -18,9 +19,6 @@ class HomeRepositoryImpl implements HomeRepository {
     try {
       List<DataProduct> products = [];
       final response = await _datasource.getProducts();
-      // if (kDebugMode) {
-      //   print(response.data);
-      // }
       if (response.statusCode != 200) {
         return Left(HttpFailure(
             response.statusCode ?? 400, response.statusMessage ?? ""));
@@ -37,6 +35,19 @@ class HomeRepositoryImpl implements HomeRepository {
           data: products,
         ),
       );
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+      return Left(HttpFailure(500, e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, DefaultResponse>> insertSales() async {
+    try {
+      final response = await _datasource.insertSales();
+      return Right(DefaultResponse.fromJson(response.data));
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());

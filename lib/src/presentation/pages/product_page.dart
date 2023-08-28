@@ -1,4 +1,5 @@
 import 'package:aos/src/presentation/pages/widgets/offline_widget.dart';
+import 'package:aos/src/utils/routes_name.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/cupertino.dart';
@@ -158,6 +159,7 @@ class ProductPage extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: Container(
+          margin: const EdgeInsets.symmetric(vertical: 10),
           padding: const EdgeInsets.symmetric(horizontal: 16),
           height: 65,
           child: Row(
@@ -182,7 +184,10 @@ class ProductPage extends StatelessWidget {
                 child: SizedBox(
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _productC.addedDataToDB(_productC.product.value);
+                      Get.toNamed(AppRouteName.cart);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
                     ),

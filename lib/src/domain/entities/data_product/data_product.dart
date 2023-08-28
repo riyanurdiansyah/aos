@@ -13,6 +13,7 @@ class DataProduct with _$DataProduct {
     required String productValue,
     required String productType,
     required String productPhoto,
+    @Default(0) int qty,
   }) = _DataProduct;
 
   factory DataProduct.fromJson(Map<String, dynamic> json) =>

@@ -15,6 +15,7 @@ _$_DataProduct _$$_DataProductFromJson(Map<String, dynamic> json) =>
       productValue: json['productValue'] as String,
       productType: json['productType'] as String,
       productPhoto: json['productPhoto'] as String,
+      qty: json['qty'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_DataProductToJson(_$_DataProduct instance) =>
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$_DataProductToJson(_$_DataProduct instance) =>
       'productValue': instance.productValue,
       'productType': instance.productType,
       'productPhoto': instance.productPhoto,
+      'qty': instance.qty,
     };
